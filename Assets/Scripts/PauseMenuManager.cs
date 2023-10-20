@@ -5,6 +5,14 @@ public class PauseMenuManager : MonoBehaviour
 {
     public GameObject canvas;
 
+    private void Start()
+    {
+        foreach (var i in FindObjectsOfType<AudioSource>())
+        {
+            i.volume = PlayerPrefs.GetFloat("Volume") / 100f;
+        }
+    }
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

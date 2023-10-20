@@ -37,6 +37,11 @@ public class MainMenuManager : MonoBehaviour
         PlayerPrefs.Save();
 
         volumeValue.text = PlayerPrefs.GetFloat("Volume").ToString();
+
+        foreach (var i in FindObjectsOfType<AudioSource>())
+        {
+            i.volume = PlayerPrefs.GetFloat("Volume") / 100f;
+        }
     }
 
     public void ExitGame()
