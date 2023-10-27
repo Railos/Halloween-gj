@@ -33,11 +33,12 @@ public class InteractionSystem : MonoBehaviour
             {
                 currentInteractable = interactable;
                 Debug.Log(hoverMessage);
-                
                 if (hitCollider.GetComponent<Upgradable>() && hitCollider.GetComponent<LootGenerator>())
                 {
                     tipUpgradeAndLoot.SetActive(true);
-                }else if (hitCollider.GetComponent<Upgradable>())
+                    hitCollider.GetComponent<LootGenerator>().canInteract = true;
+                }
+                else if (hitCollider.GetComponent<Upgradable>())
                 {
                     tipUpgrade.SetActive(true);
                 }

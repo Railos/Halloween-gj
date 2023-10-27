@@ -1,4 +1,4 @@
-using System;
+ using System;
 using UnityEngine;
 
 public class Upgradable : MonoBehaviour, IInteractable
@@ -11,6 +11,11 @@ public class Upgradable : MonoBehaviour, IInteractable
     [SerializeField] private float upgradeCostCoefficient;
 
     public GameObject[] sprites;
+
+    private void Start()
+    {
+        
+    }
 
     public void Interact()
     {
