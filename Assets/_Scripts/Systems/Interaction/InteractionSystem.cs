@@ -8,9 +8,12 @@ public class InteractionSystem : MonoBehaviour
     public string clickMessage = "Вы держите кнопку, осталось держать {0:F1}/{1:F1} секунд";
     public string finalMessage = "Вы удержали кнопку в течение {0:F1} секунд и выполнили действие.";
 
+    [SerializeField] private GameObject tipUpgradeAndLoot;
+    [SerializeField] private GameObject tipUpgrade;
+
     private IInteractable currentInteractable = null;
     private bool isClicking = false;
-    private float clickDuration = 10f;
+    private float clickDuration = 5f;
     private float interactionTime = 0f;
 
     private void Update()
@@ -18,6 +21,10 @@ public class InteractionSystem : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition);
 
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        tipUpgradeAndLoot.transform.position = new Vector3(mousePos.x, mousePos.y);
+        tipUpgrade.transform.position = new Vector3(mousePos.x, mousePos.y);
+        
         IInteractable interactable = hitCollider != null ? hitCollider.GetComponent<IInteractable>() : null;
 
         if (interactable != null)
@@ -26,6 +33,14 @@ public class InteractionSystem : MonoBehaviour
             {
                 currentInteractable = interactable;
                 Debug.Log(hoverMessage);
+                
+                if (hitCollider.GetComponent<Upgradable>() && hitCollider.GetComponent<LootGenerator>())
+                {
+                    tipUpgradeAndLoot.SetActive(true);
+                }else if (hitCollider.GetComponent<Upgradable>())
+                {
+                    tipUpgrade.SetActive(true);
+                }
             }
 
             if (Input.GetMouseButtonDown(0))
@@ -52,6 +67,7 @@ public class InteractionSystem : MonoBehaviour
                     isClicking = false;
                     Debug.Log(string.Format(finalMessage, clickDuration));
                     interactable.Interact(); // Вызов метода Interact() у объекта IInteractable
+                    interactionTime = 0f;
                 }
             }
         }
@@ -59,6 +75,8 @@ public class InteractionSystem : MonoBehaviour
         {
             // курсор убран
             currentInteractable = null;
+            tipUpgrade.SetActive(false);
+            tipUpgradeAndLoot.SetActive(false);
         }
     }
 }
