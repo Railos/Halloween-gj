@@ -41,6 +41,7 @@ public class AttackSystem : MonoBehaviour
         if (equippedWeapon != null)
         {
             AttackData attackData = equippedWeapon.attackData;
+            print(attackData.attackPrefab.name);
             if (attackData != null)
             {
                 // Получаем позицию мыши в мировых координатах
@@ -48,7 +49,8 @@ public class AttackSystem : MonoBehaviour
                 
                 // Создаем атаку в точке клика
                 Attack newAttack = Instantiate(attackData.attackPrefab, clickPosition, Quaternion.identity).GetComponent<Attack>();
-
+                newAttack.data = attackData;
+                
                 // Выполняем атаку
                 newAttack.Perform();
             }

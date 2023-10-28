@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractionSystem : MonoBehaviour
 {
@@ -8,8 +10,9 @@ public class InteractionSystem : MonoBehaviour
     public string clickMessage = "Вы держите кнопку, осталось держать {0:F1}/{1:F1} секунд";
     public string finalMessage = "Вы удержали кнопку в течение {0:F1} секунд и выполнили действие.";
 
-    [SerializeField] private GameObject tipUpgradeAndLoot;
-    [SerializeField] private GameObject tipUpgrade;
+    [SerializeField] private GameObject hoverTooltip;
+    [SerializeField] private TextMeshProUGUI tooltipText;
+    [SerializeField] private Image tooltipFiller;
 
     private IInteractable currentInteractable = null;
     private bool isClicking = false;
@@ -22,8 +25,7 @@ public class InteractionSystem : MonoBehaviour
         Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition);
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        tipUpgradeAndLoot.transform.position = new Vector3(mousePos.x, mousePos.y);
-        tipUpgrade.transform.position = new Vector3(mousePos.x, mousePos.y);
+        
         
         IInteractable interactable = hitCollider != null ? hitCollider.GetComponent<IInteractable>() : null;
 
@@ -33,17 +35,20 @@ public class InteractionSystem : MonoBehaviour
             {
                 currentInteractable = interactable;
                 Debug.Log(hoverMessage);
-                if (hitCollider.GetComponent<Upgradable>() && hitCollider.GetComponent<LootGenerator>())
+                // if (hitCollider.GetComponent<Upgradable>() && hitCollider.GetComponent<LootGenerator>())
+                // {
+                //     tipUpgradeAndLoot.SetActive(true);
+                //     hitCollider.GetComponent<LootGenerator>().canInteract = true;
+                // }
+                if (hitCollider.GetComponent<Upgradable>())
                 {
-                    tipUpgradeAndLoot.SetActive(true);
-                    hitCollider.GetComponent<LootGenerator>().canInteract = true;
-                }
-                else if (hitCollider.GetComponent<Upgradable>())
-                {
-                    tipUpgrade.SetActive(true);
+                    hoverTooltip.SetActive(true);
                 }
             }
 
+            hoverTooltip.transform.position = new Vector3(mousePos.x, mousePos.y);
+            tooltipFiller.fillAmount = interactionTime / clickDuration; 
+            
             if (Input.GetMouseButtonDown(0))
             {
                 isClicking = true;
@@ -75,9 +80,10 @@ public class InteractionSystem : MonoBehaviour
         else
         {
             // курсор убран
+            isClicking = false;
+            interactionTime = 0f;
             currentInteractable = null;
-            tipUpgrade.SetActive(false);
-            tipUpgradeAndLoot.SetActive(false);
+            hoverTooltip.SetActive(false);
         }
     }
 }

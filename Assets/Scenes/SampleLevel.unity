@@ -155,6 +155,8 @@ MonoBehaviour:
   inventory:
   - item: {fileID: 11400000, guid: 837d23097d4fa0642b9186ec5117cf18, type: 2}
     amount: 0
+  - item: {fileID: 11400000, guid: 8c670984ee153fb4dab89c6729d48a25, type: 2}
+    amount: 0
 --- !u!4 &252272156
 Transform:
   m_ObjectHideFlags: 0
@@ -339,7 +341,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157436714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c17e6d7ac54b4ec469e83d8da001ce06, type: 3}
   m_Name: 
