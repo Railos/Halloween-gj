@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,6 +30,7 @@ public class InteractionSystem : MonoBehaviour
         
         IInteractable interactable = hitCollider != null ? hitCollider.GetComponent<IInteractable>() : null;
 
+        hoverTooltip.transform.position = new Vector3(mousePos.x, mousePos.y);
         if (interactable != null)
         {
             if (currentInteractable != interactable)
@@ -40,13 +42,12 @@ public class InteractionSystem : MonoBehaviour
                 //     tipUpgradeAndLoot.SetActive(true);
                 //     hitCollider.GetComponent<LootGenerator>().canInteract = true;
                 // }
-                if (hitCollider.GetComponent<Upgradable>())
+                if (hitCollider.GetComponent<IInteractable>())
                 {
-                    hoverTooltip.SetActive(true);
+                    hoverTooltip.GetComponent<CanvasGroup>().DOFade(1f, 0.3f).SetEase(Ease.InOutCubic);
                 }
             }
 
-            hoverTooltip.transform.position = new Vector3(mousePos.x, mousePos.y);
             tooltipText.text = interactable.hoverMessage;
             tooltipFiller.fillAmount = interactionTime / clickDuration; 
             
@@ -78,13 +79,13 @@ public class InteractionSystem : MonoBehaviour
                 }
             }
         }
-        else
+        else if (currentInteractable != null)
         {
+            currentInteractable = null;
+            hoverTooltip.GetComponent<CanvasGroup>().DOFade(0f, 0.3f).SetEase(Ease.InOutCubic);
             // курсор убран
             isClicking = false;
             interactionTime = 0f;
-            currentInteractable = null;
-            hoverTooltip.SetActive(false);
         }
     }
 }
