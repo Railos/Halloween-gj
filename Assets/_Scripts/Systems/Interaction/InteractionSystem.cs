@@ -47,6 +47,7 @@ public class InteractionSystem : MonoBehaviour
             }
 
             hoverTooltip.transform.position = new Vector3(mousePos.x, mousePos.y);
+            tooltipText.text = interactable.hoverMessage;
             tooltipFiller.fillAmount = interactionTime / clickDuration; 
             
             if (Input.GetMouseButtonDown(0))

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleInteractable : MonoBehaviour, IInteractable
+public class SimpleInteractable : IInteractable
 {
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class SimpleInteractable : MonoBehaviour, IInteractable
         
     }
 
-    public void Interact()
+    public override void Interact()
     {
         print("хуй пенис" +
               "");

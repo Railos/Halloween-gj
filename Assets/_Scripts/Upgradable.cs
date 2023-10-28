@@ -1,7 +1,7 @@
  using System;
 using UnityEngine;
 
-public class Upgradable : MonoBehaviour, IInteractable
+public class Upgradable : IInteractable
 {
     [SerializeField] private int maxLevel;
     public int level;
@@ -17,7 +17,7 @@ public class Upgradable : MonoBehaviour, IInteractable
         
     }
 
-    public void Interact()
+    public override void Interact()
     {
         Upgrade();
     }
