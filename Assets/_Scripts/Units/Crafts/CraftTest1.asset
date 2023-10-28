@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169e975f16be520498e50138d64797e9, type: 3}
+  m_Name: CraftTest1
+  m_EditorClassIdentifier: 
+  resources:
+  - item: {fileID: 11400000, guid: fe80f5a3c97d79f4e88f20fb81d31801, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: 5e5e779cdc162474ba4ed6dbb7b59e20, type: 2}
+    amount: 1
+  result:
+  - item: {fileID: 11400000, guid: 837d23097d4fa0642b9186ec5117cf18, type: 2}
+    amount: 12

@@ -7,8 +7,8 @@ public class InventorySystem : MonoBehaviour
 {
     public static InventorySystem Inventory;
     
-    [SerializeField] private GameObject itemToInstantiate;
-    [SerializeField] private Transform itemGrid;
+    public GameObject itemToInstantiate;
+    public Transform itemGrid;
     public GameObject inventoryCanvas;
 
     public List<ItemStack> inventory = new();
