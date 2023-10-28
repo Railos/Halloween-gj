@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0336613826d4c84ae8e912804405d64, type: 3}
-  m_Name: PalkaData 1
+  m_Script: {fileID: 11500000, guid: 9514a84eb2e04f5091e20b79c877a136, type: 3}
+  m_Name: Butterfly Net
   m_EditorClassIdentifier: 
-  attackPrefab: {fileID: 291036244270027525, guid: 35c2af1903af01940a677abe25d5ceaa, type: 3}
-  prefab: {fileID: 188050, guid: b06f0e6c1dfa4356ac918da1bb32c603, type: 3}
+  itemName: "\u0441\u0430\u0447\u043E\u043A"
+  itemImage: {fileID: 0}
+  attackPrefab: {fileID: 1764991193664160899, guid: a3e865d8b200dfb4f924f0837b214916, type: 3}

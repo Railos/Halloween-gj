@@ -36,7 +36,7 @@ public class InteractionSystem : MonoBehaviour
             if (currentInteractable != interactable)
             {
                 currentInteractable = interactable;
-                Debug.Log(hoverMessage);
+                // Debug.Log(hoverMessage);
                 // if (hitCollider.GetComponent<Upgradable>() && hitCollider.GetComponent<LootGenerator>())
                 // {
                 //     tipUpgradeAndLoot.SetActive(true);
@@ -59,7 +59,7 @@ public class InteractionSystem : MonoBehaviour
             else if (Input.GetMouseButtonUp(0) && isClicking)
             {
                 isClicking = false;
-                Debug.Log("Клавиша отпущена");
+                // Debug.Log("Клавиша отпущена");
                 interactionTime = 0f;
             }
 
@@ -68,12 +68,12 @@ public class InteractionSystem : MonoBehaviour
                 interactionTime += Time.deltaTime;
                 float remainingTime = Mathf.Max(0, clickDuration - interactionTime);
                 string message = string.Format(clickMessage, remainingTime, clickDuration);
-                Debug.Log(message);
+                // Debug.Log(message);
 
                 if (interactionTime >= clickDuration)
                 {
                     isClicking = false;
-                    Debug.Log(string.Format(finalMessage, clickDuration));
+                    // Debug.Log(string.Format(finalMessage, clickDuration));
                     interactable.Interact(); // Вызов метода Interact() у объекта IInteractable
                     interactionTime = 0f;
                 }

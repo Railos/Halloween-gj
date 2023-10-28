@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 
-public class Attack : MonoBehaviour
+public abstract class Attack : MonoBehaviour
 {
-    public AttackData data;
-    public Transform player;
-
-    public virtual void Perform() { }
+    public abstract void Perform(Transform player, Vector2 clickPos);
 }

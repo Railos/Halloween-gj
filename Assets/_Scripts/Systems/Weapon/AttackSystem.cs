@@ -2,17 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
 {
-    public InventorySystem inventory;
-    public Weapon equippedWeapon; // Выбранное оружие
-
+    public Transform player;
+    public Transform attacksHolder;
+    public int equippedWeaponIndex; // Выбранное оружие
+    public List<Weapon> weapons = new();
+    public Dictionary<Weapon, Attack> attacks = new();
 
     private void Start()
     {
-        equippedWeapon = inventory.inventory.Where(stack => stack.item is Weapon).ToList()[0].item as Weapon;
+        equippedWeaponIndex = 0;
+        foreach (var w in weapons)
+        {
+            attacks.Add(w, Instantiate(w.attackPrefab, attacksHolder).GetComponent<Attack>());
+        }
     }
 
     private void Update()
@@ -24,37 +31,17 @@ public class AttackSystem : MonoBehaviour
 
         if (Input.GetAxisRaw("Mouse ScrollWheel") > 0f)
         {
-            List<ItemStack> stacks = inventory.inventory.Where(stack => stack.item is Weapon).ToList();
-            int index = stacks.FindIndex(a => a.item == equippedWeapon);
-            equippedWeapon = stacks[index + 1 < stacks.Count ? index + 1 : 0].item as Weapon;
+            equippedWeaponIndex = equippedWeaponIndex + 1 < weapons.Count ? equippedWeaponIndex + 1: 0;
         }
         else if (Input.GetAxisRaw("Mouse ScrollWheel") < 0f)
         {
-            List<ItemStack> stacks = inventory.inventory.Where(stack => stack.item is Weapon).ToList();
-            int index = stacks.FindIndex(a => a.item == equippedWeapon);
-            equippedWeapon = stacks[index - 1 >= 0 ? index - 1 : stacks.Count-1].item as Weapon;
+            equippedWeaponIndex = equippedWeaponIndex - 1 < -1 ? equippedWeaponIndex - 1: weapons.Count - 1;
         }
     }
 
     private void PerformAttack()
     {
-        if (equippedWeapon != null)
-        {
-            AttackData attackData = equippedWeapon.attackData;
-            print(attackData.attackPrefab.name);
-            if (attackData != null)
-            {
-                // Получаем позицию мыши в мировых координатах
-                Vector2 clickPosition = GetMouseWorldPosition();
-                
-                // Создаем атаку в точке клика
-                Attack newAttack = Instantiate(attackData.attackPrefab, clickPosition, Quaternion.identity).GetComponent<Attack>();
-                newAttack.data = attackData;
-                
-                // Выполняем атаку
-                newAttack.Perform();
-            }
-        }
+        attacks[weapons[equippedWeaponIndex]].Perform(player, GetMouseWorldPosition());
     }
 
     private Vector2 GetMouseWorldPosition()
@@ -62,5 +49,11 @@ public class AttackSystem : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = -Camera.main.transform.position.z;
         return Camera.main.ScreenToWorldPoint(mousePosition);
+    }
+
+    public void AddWeapon(Weapon weapon)
+    {
+        weapons.Add(weapon);
+        attacks[weapon] = Instantiate(weapon.attackPrefab, attacksHolder).GetComponent<Attack>();
     }
 }
