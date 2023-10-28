@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Penis
   m_EditorClassIdentifier: 
   itemName: penis
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: d4897d463d4370e43a616f57eac329dd, type: 3}

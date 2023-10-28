@@ -6,6 +6,8 @@ using UnityEngine;
 public class CraftSystem : MonoBehaviour
 {
     public static CraftSystem crafting;
+    
+    public List<Craft> crafts;
 
     private void Awake()
     {
@@ -38,6 +40,12 @@ public class CraftSystem : MonoBehaviour
                     return;
                 }
             }
+            else return;
+        }
+
+        foreach (var z in craft.resources)
+        {
+            inventory.RemoveItem(z.item, z.amount);
         }
 
         foreach (var curStack in craft.result)
@@ -47,11 +55,8 @@ public class CraftSystem : MonoBehaviour
                 item = curStack.item,
                 amount = curStack.amount
             };
-            inventory.inventory.Add(newStack);
-            var newItem = Instantiate(inventory.itemToInstantiate, Vector3.zero, Quaternion.identity, inventory.itemGrid).GetComponent<ItemPrefab>();
+            inventory.AddItem(newStack.item, newStack.amount);
             
-            newItem.image.sprite = newStack.item.itemImage;
-            newItem.amountText.text = newStack.amount.ToString();
         }
         
     }

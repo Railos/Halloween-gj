@@ -18,5 +18,5 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 5e5e779cdc162474ba4ed6dbb7b59e20, type: 2}
     amount: 1
   result:
-  - item: {fileID: 11400000, guid: 837d23097d4fa0642b9186ec5117cf18, type: 2}
-    amount: 12
+  - item: {fileID: 11400000, guid: eba96ba2e8bbfa4498e41d429a557cde, type: 2}
+    amount: 3

@@ -67,10 +67,12 @@ public class InventorySystem : MonoBehaviour
             newItem.image.sprite = newStack.item.itemImage;
             newItem.amountText.text = newStack.amount.ToString();
         }
+        
+        ReRender();
     }
 
     // Удаление предмета из инвентаря
-    public bool RemoveItem(Item item, int amount)
+    public void RemoveItem(Item item, int amount)
     {
         ItemStack existingStack = inventory.Find(stack => stack.item == item);
 
@@ -89,9 +91,24 @@ public class InventorySystem : MonoBehaviour
                 
                 Destroy(itemStack.gameObject);
             }
+        }
+        
+        ReRender();
+    }
 
-            return true;
-        } 
-        return false;
+    public void ReRender()
+    {
+        foreach (Transform child in itemGrid.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var z in inventory)
+        {
+            var newItem = Instantiate(itemToInstantiate, Vector3.zero, Quaternion.identity, itemGrid).GetComponent<ItemPrefab>();
+            
+            newItem.image.sprite = z.item.itemImage;
+            newItem.amountText.text = z.amount.ToString();
+        }
     }
 }

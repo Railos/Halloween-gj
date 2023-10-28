@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Wood
   m_EditorClassIdentifier: 
   itemName: derevo
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 13bea4a025627f9459062c306b04418e, type: 3}
