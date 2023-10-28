@@ -17,7 +17,7 @@ public class InteractionSystem : MonoBehaviour
 
     private IInteractable currentInteractable = null;
     private bool isClicking = false;
-    private float clickDuration = 5f;
+    private float clickDuration = 1f;
     private float interactionTime = 0f;
 
     private void Update()
@@ -29,10 +29,11 @@ public class InteractionSystem : MonoBehaviour
         
         
         IInteractable interactable = hitCollider != null ? hitCollider.GetComponent<IInteractable>() : null;
-
+        
         hoverTooltip.transform.position = new Vector3(mousePos.x, mousePos.y);
         if (interactable != null)
         {
+            clickDuration = interactable.interactTime;
             if (currentInteractable != interactable)
             {
                 currentInteractable = interactable;
@@ -51,12 +52,12 @@ public class InteractionSystem : MonoBehaviour
             tooltipText.text = interactable.hoverMessage;
             tooltipFiller.fillAmount = interactionTime / clickDuration; 
             
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(interactable.interactButton))
             {
                 isClicking = true;
                 interactionTime = 0f;
             }
-            else if (Input.GetMouseButtonUp(0) && isClicking)
+            else if (Input.GetKeyUp(interactable.interactButton) && isClicking)
             {
                 isClicking = false;
                 // Debug.Log("Клавиша отпущена");
