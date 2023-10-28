@@ -2,16 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackSystem : MonoBehaviour
 {
+    public RectTransform itemPanel;
+    public TextMeshProUGUI currentItemText;
+    public Image currentItemIcon;
     public Transform player;
     public Transform attacksHolder;
     public int equippedWeaponIndex; // Выбранное оружие
-    public List<Weapon> weapons = new();
-    public Dictionary<Weapon, Attack> attacks = new();
+    public List<Weapon> weapons = new List<Weapon>();
+    public Dictionary<Weapon, Attack> attacks = new Dictionary<Weapon, Attack>();
+    public float weaponSwitchCooldown = 1.0f; // Время кулдауна на переключение оружия
+    private float lastSwitchTime;
 
     private void Start()
     {
@@ -20,6 +28,8 @@ public class AttackSystem : MonoBehaviour
         {
             attacks.Add(w, Instantiate(w.attackPrefab, attacksHolder).GetComponent<Attack>());
         }
+
+        UpdateUI();
     }
 
     private void Update()
@@ -29,19 +39,39 @@ public class AttackSystem : MonoBehaviour
             PerformAttack();
         }
 
-        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0f)
+        if (Time.time - lastSwitchTime >= weaponSwitchCooldown)
         {
-            equippedWeaponIndex = equippedWeaponIndex + 1 < weapons.Count ? equippedWeaponIndex + 1: 0;
+            if (Input.GetAxisRaw("Mouse ScrollWheel") > 0f)
+            {
+                SwitchToNextWeapon();
+            }
+            else if (Input.GetAxisRaw("Mouse ScrollWheel") < 0f)
+            {
+                SwitchToPreviousWeapon();
+            }
         }
-        else if (Input.GetAxisRaw("Mouse ScrollWheel") < 0f)
-        {
-            equippedWeaponIndex = equippedWeaponIndex - 1 < -1 ? equippedWeaponIndex - 1: weapons.Count - 1;
-        }
+    }
+
+    private void SwitchToNextWeapon()
+    {
+        equippedWeaponIndex = (equippedWeaponIndex + 1) % weapons.Count;
+        lastSwitchTime = Time.time;
+        UpdateUI();
+    }
+
+    private void SwitchToPreviousWeapon()
+    {
+        equippedWeaponIndex = (equippedWeaponIndex - 1 + weapons.Count) % weapons.Count;
+        lastSwitchTime = Time.time;
+        UpdateUI();
     }
 
     private void PerformAttack()
     {
-        attacks[weapons[equippedWeaponIndex]].Perform(player, GetMouseWorldPosition());
+        if (attacks.TryGetValue(weapons[equippedWeaponIndex], out var attack))
+        {
+            attack.Perform(player, GetMouseWorldPosition());
+        }
     }
 
     private Vector2 GetMouseWorldPosition()
@@ -49,6 +79,12 @@ public class AttackSystem : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = -Camera.main.transform.position.z;
         return Camera.main.ScreenToWorldPoint(mousePosition);
+    }
+
+    private void UpdateUI()
+    {
+        currentItemText.text = weapons[equippedWeaponIndex].itemName;
+        currentItemIcon.sprite = weapons[equippedWeaponIndex].itemImage;
     }
 
     public void AddWeapon(Weapon weapon)

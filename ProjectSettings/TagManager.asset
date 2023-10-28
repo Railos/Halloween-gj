@@ -45,3 +45,9 @@ TagManager:
   - name: Player
     uniqueID: 3786005275
     locked: 0
+  - name: Soul
+    uniqueID: 1956445951
+    locked: 0
+  - name: UI
+    uniqueID: 2859106351
+    locked: 0

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Butterfly Net
   m_EditorClassIdentifier: 
   itemName: "\u0441\u0430\u0447\u043E\u043A"
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 0a54021778f513b4bba7f04bfc57c9d0, type: 3}
   attackPrefab: {fileID: 1764991193664160899, guid: a3e865d8b200dfb4f924f0837b214916, type: 3}

@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bdfa22f35f43549a3e1a6b65cda7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catchRadius: 1
+  catchRadius: 2
   catched: 0
   graveDestination: {fileID: 0}
