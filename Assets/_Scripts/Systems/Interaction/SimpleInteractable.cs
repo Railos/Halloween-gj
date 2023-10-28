@@ -1,24 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class InteractEvent : UnityEvent {}
 
 public class SimpleInteractable : IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
+    public InteractEvent Event;
+    
     public override void Interact()
     {
-        print("хуй пенис" +
-              "");
+        Event.Invoke();
     }
 }

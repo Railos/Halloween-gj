@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,9 @@ public class CraftMenu : MonoBehaviour
 
     [SerializeField] private GameObject resourcesGroup;
     [SerializeField] private GameObject craftResource;
+
+    [SerializeField] private TMP_Text craftName;
+    [SerializeField] private Image craftIcon;
 
     public static CraftMenu craftMenu;
     public Craft curRecipe;
@@ -51,6 +55,9 @@ public class CraftMenu : MonoBehaviour
         }
 
         curRecipe = button.GetComponent<CraftButtonPrefab>().craft;
+
+        craftName.text = curRecipe.result[0].item.itemName;
+        craftIcon.sprite = curRecipe.result[0].item.itemImage;
         foreach (var itemStack in button.GetComponent<CraftButtonPrefab>().craft.resources)
         {
             var newResource = Instantiate(craftResource, Vector3.zero, Quaternion.identity, resourcesGroup.transform).GetComponent<CraftResourcePrefab>();
@@ -63,5 +70,10 @@ public class CraftMenu : MonoBehaviour
     public void DoCrafting()
     {
         CraftSystem.crafting.Craft(curRecipe);
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
     }
 }

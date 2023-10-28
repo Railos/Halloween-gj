@@ -21,6 +21,11 @@ public class CraftSystem : MonoBehaviour
         }
     }
 
+    public void OpenMenu()
+    {
+        CraftMenu.craftMenu.gameObject.SetActive(true);
+    }
+    
     public void Craft(Craft craft)
     {
         var inventory = InventorySystem.Inventory;
