@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: zv
   itemImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  attackData: {fileID: 11400000, guid: 8f5120e6f8269ab4787f884c01d821b3, type: 2}
+  attackPrefab: {fileID: 291036244270027525, guid: 35c2af1903af01940a677abe25d5ceaa, type: 3}

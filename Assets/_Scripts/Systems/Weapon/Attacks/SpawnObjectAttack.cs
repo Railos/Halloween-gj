@@ -1,10 +1,12 @@
 ﻿
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SpawnObjectAttack : Attack
 {
-    public override void Perform()
+    public GameObject prefab;
+    public override void Perform(Transform player, Vector2 clickPos)
     {
-        Instantiate((data as SpawnObjectAttackData).prefab, transform.position, Quaternion.identity);
+        Instantiate(prefab, clickPos, Quaternion.identity);
     }
 }

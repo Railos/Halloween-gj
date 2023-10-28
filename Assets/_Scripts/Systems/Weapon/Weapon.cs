@@ -3,5 +3,5 @@
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Inventory/Weapon")]
 public class Weapon : Item
 {
-    public AttackData attackData;
+    public GameObject attackPrefab;
 }
