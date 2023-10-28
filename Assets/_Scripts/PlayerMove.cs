@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public static PlayerMove player;
+    
     [SerializeField] private float moveSpeed;
     [SerializeField] private float acceleration;
     [SerializeField] private float deacceleration;
@@ -10,6 +12,18 @@ public class PlayerMove : MonoBehaviour
     private Vector2 moveDir;
     private Rigidbody2D rb;
 
+    private void Awake()
+    {
+        if (player != null)
+        {
+            Destroy(player);
+        }
+        else
+        {
+            player = this;
+        }
+    }
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
