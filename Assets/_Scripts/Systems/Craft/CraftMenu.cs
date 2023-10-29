@@ -88,7 +88,7 @@ public class CraftMenu : MonoBehaviour
         foreach (var craft in CraftSystem.crafting.crafts)
         {
             var newButton = Instantiate(craftButton, Vector3.zero, Quaternion.identity, contentGroup.transform).GetComponent<CraftButtonPrefab>();
-
+            
             newButton.icon.sprite = craft.result[0].item.itemImage;
             newButton.name.text = craft.result[0].item.itemName;
             newButton.name.color = CraftSystem.crafting.CanCraft(craft) ? canCraftColor : cannotCraftColor;

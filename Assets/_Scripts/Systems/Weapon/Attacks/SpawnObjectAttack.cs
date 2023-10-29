@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnObjectAttack : Attack
 {
+    public AudioClip shootSound;
     public float cooldown = 0.5f; // Время кулдауна между атаками
     private float lastAttackTime;
     public GameObject prefab;
@@ -20,6 +21,8 @@ public class SpawnObjectAttack : Attack
             Instantiate(prefab, clickPos, Quaternion.identity);
 
             lastAttackTime = Time.time; // Запоминаем время последней атаки
+            AudioSystem.Instance.PlaySound(shootSound);
+
         }
     }
 }

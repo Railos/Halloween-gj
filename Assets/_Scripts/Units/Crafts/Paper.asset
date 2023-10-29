@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169e975f16be520498e50138d64797e9, type: 3}
   m_Name: Paper
   m_EditorClassIdentifier: 
-  resources: []
+  resources:
+  - item: {fileID: 11400000, guid: fe80f5a3c97d79f4e88f20fb81d31801, type: 2}
+    amount: 5
   result:
-  - item: {fileID: 0}
+  - item: {fileID: 11400000, guid: b96120022f40b6a4596f2e52e6b2895c, type: 2}
     amount: 1
