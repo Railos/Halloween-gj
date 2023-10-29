@@ -6,6 +6,7 @@
 
 public class Upgradable : MonoBehaviour
 {
+    public IInteractable Interactable;
     [SerializeField] private int maxLevel;
     public int level;
 
@@ -20,6 +21,33 @@ public class Upgradable : MonoBehaviour
 
     private void Start()
     {
+        
+    }
+
+    private void Update()
+    {
+        
+        foreach (var itemStack in upgradeCost)
+        {
+            ItemStack existingStack = InventorySystem.Inventory.inventory.Find(stack => stack.item == itemStack.item);
+
+            if (existingStack != null)
+            {
+                if (existingStack.amount < itemStack.amount)
+                {
+                    hoverText.text = "Недостаточно ресурсов!";
+                    Interactable.enabled = false;
+                    return;
+                }
+            }
+            else
+            {
+                Interactable.enabled = false;
+                return;
+            }
+        }
+        Interactable.enabled = true;
+
         
     }
 
