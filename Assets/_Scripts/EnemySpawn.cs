@@ -27,7 +27,10 @@ public class EnemySpawn : MonoBehaviour
     private void Spawn()
     {
         Instantiate(enemyTypes[Random.Range(0,enemyTypes.Count-1)], spawnPos[Random.Range(0, spawnPos.Count)].position, Quaternion.identity);
-        if (timeBetweenEnemy > minTime) timeBetweenEnemy -= timeReducage;
+        if (timeBetweenEnemy > minTime)
+        {
+            timeBetweenEnemy -= timeReducage;
+        }
         
         canSpawn = true;
     }
