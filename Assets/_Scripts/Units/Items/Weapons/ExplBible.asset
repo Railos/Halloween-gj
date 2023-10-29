@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9514a84eb2e04f5091e20b79c877a136, type: 3}
   m_Name: ExplBible
   m_EditorClassIdentifier: 
-  itemName: "\u0411\u0438\u0431\u043B\u0438\u044F (\u0432\u0437\u0440\u044B\u0432)"
-  itemImage: {fileID: 21300000, guid: c150ec52c8b2d064c8fc9a497b5a2517, type: 3}
+  itemName: "\u0422\u043E\u043C \u0414\u0443\u0448 II"
+  itemImage: {fileID: 21300000, guid: 59d2ea18ef5cb894daa25cd031b8ee3a, type: 3}
   attackPrefab: {fileID: 2422550549980839880, guid: c541afbf6fca24242bd0f4410d0fe4fc, type: 3}

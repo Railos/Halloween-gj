@@ -4,9 +4,22 @@ using UnityEngine;
 
 public class SpawnObjectAttack : Attack
 {
+    public float cooldown = 0.5f; // Время кулдауна между атаками
+    private float lastAttackTime;
     public GameObject prefab;
+    
+    void Start()
+    {
+        lastAttackTime = -cooldown; // Устанавливаем время в прошлое, чтобы сразу можно было атаковать
+    }
+    
     public override void Perform(Transform player, Vector2 clickPos)
     {
-        Instantiate(prefab, clickPos, Quaternion.identity);
+        if (Time.time - lastAttackTime >= cooldown)
+        {
+            Instantiate(prefab, clickPos, Quaternion.identity);
+
+            lastAttackTime = Time.time; // Запоминаем время последней атаки
+        }
     }
 }
