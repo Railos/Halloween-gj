@@ -16328,6 +16328,7 @@ MonoBehaviour:
   equippedWeaponIndex: 0
   weapons:
   - {fileID: 11400000, guid: 80d58ab7d45815d4db3c325b817adb62, type: 2}
+  - {fileID: 11400000, guid: 0b351d1a68f2b5341971727225f35ac4, type: 2}
   weaponSwitchCooldown: 0.3
 --- !u!1001 &747606194
 PrefabInstance:
@@ -23091,6 +23092,10 @@ PrefabInstance:
       propertyPath: inventoryCanvas
       value: 
       objectReference: {fileID: 698739074}
+    - target: {fileID: 1858661772645929828, guid: 1993fc82b6244724d83d85435eba7e48, type: 3}
+      propertyPath: inventory.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1858661772645929829, guid: 1993fc82b6244724d83d85435eba7e48, type: 3}
       propertyPath: m_Name
       value: Inventory
@@ -45258,6 +45263,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f3cb93869f071a47aa96d23c3803f95, type: 3}
+--- !u!1001 &7466392613601807652
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8936178161734975751, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_Name
+      value: SpawnFrozeballlAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936178161734975801, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936178161734975801, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 298.44522
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936178161734975801, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 93.282616
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936178161734975801, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.1552377
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936178161734975801, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936178161734975801, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936178161734975801, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936178161734975801, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936178161734975801, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936178161734975801, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936178161734975801, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ddd30356e33e62045bd716f2e2738698, type: 3}
 --- !u!1001 &9136320802962122831
 PrefabInstance:
   m_ObjectHideFlags: 0

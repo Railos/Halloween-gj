@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 169e975f16be520498e50138d64797e9, type: 3}
-  m_Name: CraftTest1
+  m_Name: EXl
   m_EditorClassIdentifier: 
   resources:
-  - item: {fileID: 11400000, guid: fe80f5a3c97d79f4e88f20fb81d31801, type: 2}
-    amount: 2
-  - item: {fileID: 11400000, guid: 5e5e779cdc162474ba4ed6dbb7b59e20, type: 2}
-    amount: 1
-  result:
-  - item: {fileID: 11400000, guid: eba96ba2e8bbfa4498e41d429a557cde, type: 2}
+  - item: {fileID: 11400000, guid: b96120022f40b6a4596f2e52e6b2895c, type: 2}
+    amount: 5
+  - item: {fileID: 11400000, guid: 6fc53bedb7655844e97a272d82fcec0b, type: 2}
     amount: 3
+  - item: {fileID: 11400000, guid: fe80f5a3c97d79f4e88f20fb81d31801, type: 2}
+    amount: 7
+  result:
+  - item: {fileID: 11400000, guid: 0b351d1a68f2b5341971727225f35ac4, type: 2}
+    amount: 1
