@@ -19,10 +19,8 @@ public class Upgradable : MonoBehaviour
 
     public GameObject[] sprites;
 
-    private void Start()
-    {
-        
-    }
+    public string level1Text;
+    public string level2Text;
 
     private void Update()
     {

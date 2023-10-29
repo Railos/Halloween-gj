@@ -334,16 +334,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 0
-  maxHp: 20
+  maxHp: 30
   dropList:
   - dropPrefab: {fileID: 3362569042560732596, guid: 48765cbab2f68634187ec0ca4253b0b7, type: 3}
     amount: 3
+    chance: 100
+  - dropPrefab: {fileID: 8920101579102504448, guid: ff062846839f945479821bc545d6f8f6, type: 3}
+    amount: 1
+    chance: 25
   damage: 10
   Path: {fileID: 3121695848420541703}
   house: {fileID: 0}
   distDestination: 1
   destSetter: {fileID: 3121695848420541700}
   animator: {fileID: 3121695848420541722}
+  freezeLevel: 0
+  freezeTime: 5
 --- !u!114 &3121695848420541702
 MonoBehaviour:
   m_ObjectHideFlags: 0
