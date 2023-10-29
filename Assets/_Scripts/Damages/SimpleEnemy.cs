@@ -13,6 +13,11 @@ public class SimpleEnemy : DamageableEnemy
     public AIDestinationSetter destSetter;
     public Animator animator;
 
+    public int freezeLevel;
+    public float freezeTime;
+
+    private bool isFreezed;
+
     private void Start()
     {
         house = FindObjectOfType<Shack>().transform;
@@ -38,6 +43,26 @@ public class SimpleEnemy : DamageableEnemy
             destSetter.target = house;
             Path.enabled = true;
         }
+        
+        if (freezeLevel >= 3)
+        {
+            Path.enabled = false;
+            animator.enabled = false;
+            if (!isFreezed)
+            {
+                Invoke(nameof(UnFreeze), freezeTime);
+                isFreezed = true;
+            }
+                
+        }
+    }
+
+    private void UnFreeze()
+    {
+        Path.enabled = true;
+        animator.enabled = true;
+        freezeLevel = 0;
+        isFreezed = false;
     }
 
     void OnPunch()
