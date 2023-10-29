@@ -6,7 +6,7 @@ using UnityEngine;
 public class CraftSystem : MonoBehaviour
 {
     public static CraftSystem crafting;
-    
+    public AudioClip craftSound;
     public List<Craft> crafts;
 
     private void Awake()
@@ -50,7 +50,7 @@ public class CraftSystem : MonoBehaviour
             inventory.AddItem(newStack.item, newStack.amount);
             
         }
-        
+        AudioSystem.Instance.PlaySound(craftSound);
     }
 
     public bool CanCraft(Craft craft)

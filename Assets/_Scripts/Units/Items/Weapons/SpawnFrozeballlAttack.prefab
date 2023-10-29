@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12b2ebf623996c4cbbbdaaa698335d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootSound: {fileID: 8300000, guid: a2330b53b49d29948b05052ecd954cc1, type: 3}
   projectilePrefab: {fileID: 1033438244055290581, guid: 64d560892ce7c5d4192fdac5b6fb7ef2, type: 3}
   cooldown: 1.5

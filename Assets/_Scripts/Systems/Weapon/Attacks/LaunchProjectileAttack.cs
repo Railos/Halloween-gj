@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LaunchProjectileAttack : Attack
 {
+    public AudioClip shootSound;
     public GameObject projectilePrefab;
     public float cooldown = 0.5f; // Время кулдауна между атаками
     private float lastAttackTime;
@@ -39,8 +40,8 @@ public class LaunchProjectileAttack : Attack
             Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
 
             Instantiate(projectilePrefab, player.GetComponent<PlayerBootstrap>().shootPoint.position, targetRotation);
-            
             lastAttackTime = Time.time; // Запоминаем время последней атаки
+            AudioSystem.Instance.PlaySound(shootSound);
         }
     }
 }
