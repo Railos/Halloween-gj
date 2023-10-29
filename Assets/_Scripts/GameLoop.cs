@@ -45,6 +45,7 @@ public class GameLoop : Singleton<GameLoop>
         gameOverScreen.gameObject.SetActive(true);
         gameOverScreen.DOFade(1f, 0.3f);
     }
+<<<<<<< HEAD
 
     public void Restart()
     {
@@ -55,4 +56,7 @@ public class GameLoop : Singleton<GameLoop>
     {
         SceneManager.LoadScene(0);
     }
+=======
+    
+>>>>>>> e2f329a7bf733267dc1115a3f4bed7734aaf87a7
 }
