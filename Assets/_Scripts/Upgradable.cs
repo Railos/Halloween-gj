@@ -33,14 +33,14 @@ public class Upgradable : MonoBehaviour
             {
                 if (existingStack.amount < itemStack.amount)
                 {
-                    GetComponent<SimpleInteractable>().hoverMessage = "Недостаточно ресурсов!";
+                    GetComponent<SimpleInteractable>().hoverMessage = $"Недостаточно ресурсов! {level1Text}";
                     Interactable.enabled = false;
                     return;
                 }
             }
             else
             {
-                GetComponent<SimpleInteractable>().hoverMessage = "Недостаточно ресурсов!";
+                GetComponent<SimpleInteractable>().hoverMessage = $"Недостаточно ресурсов! {level1Text}";
                 Interactable.enabled = false;
                 return;
             }
@@ -61,7 +61,7 @@ public class Upgradable : MonoBehaviour
             {
                 if (existingStack.amount < itemStack.amount)
                 {
-                    GetComponent<SimpleInteractable>().hoverMessage = "Недостаточно ресурсов!";
+                    GetComponent<SimpleInteractable>().hoverMessage = $"Недостаточно ресурсов! {level1Text}";
                     return;
                 }
             }

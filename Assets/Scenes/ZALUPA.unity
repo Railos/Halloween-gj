@@ -37120,7 +37120,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 538512110}
   - {fileID: 770912355}
-  level1Text: "\u0412\u0430\u043C \u043D\u0443\u0436\u043D\u043E 3 \u043A\u0430\u043C\u043D\u044F"
+  level1Text: "\u0412\u0430\u043C \u043D\u0443\u0436\u043D\u043E 30 \u043A\u0430\u043C\u043D\u044F"
   level2Text: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439
     \u0443\u0440\u043E\u0432\u0435\u043D\u044C."
 --- !u!61 &1726105529
@@ -43955,6 +43955,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   maxHp: 100
+  sprites: []
+  sound: {fileID: 0}
 --- !u!1001 &2083283565
 PrefabInstance:
   m_ObjectHideFlags: 0

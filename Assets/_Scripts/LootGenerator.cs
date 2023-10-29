@@ -29,5 +29,6 @@ public class LootGenerator : MonoBehaviour
 
         spawnedItem = Instantiate(generatingItem, spawnPos.position, Quaternion.identity);
         spawnedItem.GetComponent<ItemDrop>().amount = resources;
+        resources = 0;
     }
 }

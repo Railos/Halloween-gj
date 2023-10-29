@@ -31,7 +31,7 @@ public class InteractionSystem : MonoBehaviour
         
         IInteractable interactable = hitCollider != null ? hitCollider.GetComponent<IInteractable>() : null;
         
-        hoverTooltip.transform.position = new Vector3(mousePos.x, mousePos.y);
+        hoverTooltip.transform.position = new Vector3(mousePos.x + 1f, mousePos.y);
         if (interactable != null)
         {
             clickDuration = interactable.interactTime;
