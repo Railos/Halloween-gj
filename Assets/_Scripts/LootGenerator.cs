@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class LootGenerator : MonoBehaviour
 {
-    public float resources;
+    public int resources;
 
-    [SerializeField] private Item generatingItem;
-    [SerializeField] private float resourcePerTime;
+    [SerializeField] private GameObject generatingItem;
+    [SerializeField] private int resourcePerTime;
     [SerializeField] private float timeForResource;
 
     private bool canAdd = true;
+    private GameObject spawnedItem;
+    [SerializeField] private Transform spawnPos;
 
     private void Update()
     {
@@ -21,7 +23,11 @@ public class LootGenerator : MonoBehaviour
 
     private void AddItem()
     {
+        if (spawnedItem != null) Destroy(spawnedItem);
         resources += resourcePerTime;
         canAdd = true;
+
+        spawnedItem = Instantiate(generatingItem, spawnPos.position, Quaternion.identity);
+        spawnedItem.GetComponent<ItemDrop>().amount = resources;
     }
 }

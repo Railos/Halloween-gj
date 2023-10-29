@@ -82,17 +82,13 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<InteractionSystem>())
+        if (other.GetComponent<ItemDrop>())
         {
-            other.transform.GetChild(0).gameObject.SetActive(true);
+            var drop = other.GetComponent<ItemDrop>();
+            InventorySystem.Inventory.AddItem(drop.item, drop.amount);
+            
+            Destroy(other.gameObject);
         }
     }
-    
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.GetComponent<InteractionSystem>())
-        {
-            other.transform.GetChild(0).gameObject.SetActive(false);
-        }
-    }
+
 }
