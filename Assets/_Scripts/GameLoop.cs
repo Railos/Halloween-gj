@@ -13,6 +13,10 @@ public class GameLoop : Singleton<GameLoop>
     public TextMeshProUGUI soulsCount;
     public Image soulsCountBar;
     public string countText;
+    public CanvasGroup winScreen;
+    public TMP_Text timerText;
+
+    public float winTimer;
     
     // Start is called before the first frame update
     void Start()
@@ -25,7 +29,14 @@ public class GameLoop : Singleton<GameLoop>
     // Update is called once per frame
     void Update()
     {
-        
+        winTimer -= Time.deltaTime;
+        if (winTimer < 0.1f)
+        {
+            timerText.gameObject.SetActive(false);
+            YouWin();
+        }
+
+        timerText.text = (Mathf.Round(winTimer * 10f) * 0.1f).ToString();
     }
 
     public void DecreaseSoulsCount()
@@ -45,8 +56,12 @@ public class GameLoop : Singleton<GameLoop>
         gameOverScreen.gameObject.SetActive(true);
         gameOverScreen.DOFade(1f, 0.3f);
     }
-<<<<<<< HEAD
 
+    public void YouWin()
+    {
+        winScreen.gameObject.SetActive(true);
+        winScreen.DOFade(1f, 0.3f);
+    }
     public void Restart()
     {
         SceneManager.LoadScene(1);
@@ -56,7 +71,4 @@ public class GameLoop : Singleton<GameLoop>
     {
         SceneManager.LoadScene(0);
     }
-=======
-    
->>>>>>> e2f329a7bf733267dc1115a3f4bed7734aaf87a7
 }
