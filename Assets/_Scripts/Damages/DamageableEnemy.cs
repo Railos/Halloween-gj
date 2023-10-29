@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DamageableEnemy : MonoBehaviour, IDamageable
 {
     public float hp, maxHp;
     public List<dropWhenDie> dropList;
-        
+
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +17,6 @@ public class DamageableEnemy : MonoBehaviour, IDamageable
         hp = maxHp;
     }
 
-    
     public void GetDamage(float damage)
     {
         hp -= damage;
@@ -28,9 +30,12 @@ public class DamageableEnemy : MonoBehaviour, IDamageable
     {
         foreach (var zalupen in dropList)
         {
-            var drop = Instantiate(zalupen.dropPrefab, transform.position, Quaternion.identity).GetComponent<ItemDrop>();
+            if (Random.Range(1, 100 / zalupen.chance) == 1)
+            {
+                var drop = Instantiate(zalupen.dropPrefab, transform.position, Quaternion.identity).GetComponent<ItemDrop>();
 
-            drop.amount = zalupen.amount;
+                drop.amount = zalupen.amount;
+            }
         }
         
         Destroy(gameObject);
@@ -42,4 +47,5 @@ public struct dropWhenDie
 {
     public GameObject dropPrefab;
     public int amount;
+    public int chance;
 }
