@@ -44,4 +44,5 @@ public class GameLoop : Singleton<GameLoop>
         gameOverScreen.gameObject.SetActive(true);
         gameOverScreen.DOFade(1f, 0.3f);
     }
+    
 }
