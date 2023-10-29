@@ -17,6 +17,7 @@ public class ButterflyNetAttack : Attack
             Collider2D res = result.FirstOrDefault(c => c.gameObject.TryGetComponent(out grave) && c.gameObject.GetComponent<Grave>() == graveDestination && !c.gameObject.GetComponent<Grave>().hasSoul);
             if (res != null)
             {
+                player.GetComponent<PlayerBootstrap>().soulCatchedLight.SetActive(false);
                 res.GetComponent<Grave>().ReturnSoul();
                 catched = false;
                 graveDestination = null;
@@ -30,6 +31,8 @@ public class ButterflyNetAttack : Attack
             if (ghost)
             {
                 Destroy(ghost.gameObject);
+                player.GetComponent<PlayerBootstrap>().soulCatchedLight.SetActive(true);
+                ghost.linkedGrave.Highlight();
                 catched = true;
                 graveDestination = ghost.linkedGrave;
             }

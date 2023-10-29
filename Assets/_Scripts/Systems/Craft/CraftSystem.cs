@@ -23,31 +23,18 @@ public class CraftSystem : MonoBehaviour
 
     public void OpenMenu()
     {
-        CraftMenu.craftMenu.gameObject.SetActive(true);
+        CraftMenu.craftMenu.OpenMenu();
     }
     
     public void Craft(Craft craft)
     {
         var inventory = InventorySystem.Inventory;
         //Проверяем на наличие нужных ресурсов
-        foreach (ItemStack itemStack in craft.resources)
-        {
-            ItemStack existingStack = InventorySystem.Inventory.inventory.Find(stack => stack.item == itemStack.item);
-            if (existingStack != null)
-            {
-                if (existingStack.amount >= itemStack.amount)
-                {
-                    Debug.Log("Ингридиент есть!");
-                }
-                else
-                {
-                    Debug.Log($"Не хватает {itemStack.amount - existingStack.amount} {existingStack.item.itemName}");
-                    return;
-                }
-            }
-            else return;
-        }
 
+        if (!CanCraft(craft))
+        {
+            return;
+        }
         foreach (var z in craft.resources)
         {
             inventory.RemoveItem(z.item, z.amount);
@@ -64,5 +51,27 @@ public class CraftSystem : MonoBehaviour
             
         }
         
+    }
+
+    public bool CanCraft(Craft craft)
+    {
+        foreach (ItemStack itemStack in craft.resources)
+        {
+            ItemStack existingStack = InventorySystem.Inventory.inventory.Find(stack => stack.item == itemStack.item);
+            if (existingStack != null)
+            {
+                if (existingStack.amount >= itemStack.amount)
+                {
+                    
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else return false;
+        }
+
+        return true;
     }
 }

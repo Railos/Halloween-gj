@@ -11,6 +11,7 @@ public class InteractionSystem : MonoBehaviour
     public string clickMessage = "Вы держите кнопку, осталось держать {0:F1}/{1:F1} секунд";
     public string finalMessage = "Вы удержали кнопку в течение {0:F1} секунд и выполнили действие.";
 
+    public LayerMask layerMask;
     [SerializeField] private GameObject hoverTooltip;
     [SerializeField] private TextMeshProUGUI tooltipText;
     [SerializeField] private Image tooltipFiller;
@@ -23,7 +24,7 @@ public class InteractionSystem : MonoBehaviour
     private void Update()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition);
+        Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition, layerMask);
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         

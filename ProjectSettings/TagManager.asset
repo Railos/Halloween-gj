@@ -9,14 +9,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - InteractCollider
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - IgnoreInteraction
+  - Player
+  - Obstacle
+  - Tree
+  - Soul
   - 
   - 
   - 

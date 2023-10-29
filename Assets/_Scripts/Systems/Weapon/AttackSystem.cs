@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AttackSystem : MonoBehaviour
+public class AttackSystem : Singleton<AttackSystem>
 {
     public RectTransform itemPanel;
     public TextMeshProUGUI currentItemText;

@@ -44,6 +44,12 @@ public class InventorySystem : MonoBehaviour
 
     public void AddItem(Item item, int amount)
     {
+        if (item is Weapon)
+        {
+            AttackSystem.Instance.AddWeapon((Weapon) item);
+            return;
+        }
+        
         ItemStack existingStack = inventory.Find(stack => stack.item == item);
 
         if (existingStack != null)

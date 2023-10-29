@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3141b0a92cce4132a1afd9169a5c0083, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  itemName: derevo
+  itemName: "\u0414\u0435\u0440\u0435\u0432\u043E"
   itemImage: {fileID: 21300000, guid: 13bea4a025627f9459062c306b04418e, type: 3}
