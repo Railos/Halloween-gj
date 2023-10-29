@@ -10,7 +10,7 @@ public class Grave : IInteractable
     public float maxCleanSpawnInterval = 15.0f; // Максимальное время между спавном душ из чистой могилы
     public float minDirtySpawnInterval = 2.0f; // Минимальное время между спавном душ из грязной могилы
     public float maxDirtySpawnInterval = 8.0f; // Максимальное время между спавном душ из грязной могилы
-    public float cleanFactorDuration = 20.0f; // Время, после которого фактор чистоты становится false
+    public float cleanFactorDuration = 40.0f; // Время, после которого фактор чистоты становится false
     private float lastSpawnTime;
     private float lastInteractTime;
     private bool isClean = true;
