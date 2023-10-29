@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +15,8 @@ public class InventorySystem : MonoBehaviour
 
     public List<ItemStack> inventory = new();
 
+    private bool curState;
+
     // Добавление предмета в инвентарь
 
     private void Awake()
@@ -26,17 +30,14 @@ public class InventorySystem : MonoBehaviour
             Inventory = this;
         }
     }
-    
-    private void Start()
-    {
-        inventoryCanvas.SetActive(false);
-    }
-    
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            inventoryCanvas.SetActive(!inventoryCanvas.activeSelf);
+            curState = !curState;
+            
+            inventoryCanvas.GetComponent<CanvasGroup>().DOFade(Convert.ToInt32(curState), 0.3f).SetEase(Ease.InOutCubic);
         }
 
         inventoryCanvas.transform.position = new Vector3(PlayerMove.player.transform.position.x, PlayerMove.player.transform.position.y + 2.5f, 0f);
