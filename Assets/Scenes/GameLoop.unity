@@ -1211,8 +1211,8 @@ Transform:
   - {fileID: 2076301294}
   - {fileID: 1731495883}
   - {fileID: 1471069943}
-  - {fileID: 1336626928}
   - {fileID: 698739072}
+  - {fileID: 1336626928}
   - {fileID: 860606779}
   - {fileID: 297007023}
   m_Father: {fileID: 0}
@@ -8766,9 +8766,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 758561817}
     m_Modifications:
+    - target: {fileID: 1622441893, guid: 626ed076edb55a44388c43cfebe7f5bd, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1622441893, guid: 626ed076edb55a44388c43cfebe7f5bd, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2382489048951916866, guid: 626ed076edb55a44388c43cfebe7f5bd, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382489048951916867, guid: 626ed076edb55a44388c43cfebe7f5bd, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382489048951916867, guid: 626ed076edb55a44388c43cfebe7f5bd, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2382489048951916868, guid: 626ed076edb55a44388c43cfebe7f5bd, type: 3}
       propertyPath: m_RootOrder
@@ -8924,6 +8940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1fd70a9725e414ea5e2398a7c3f65e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Interactable: {fileID: 0}
   maxLevel: 1
   level: 0
   upgradeCost:
@@ -9279,6 +9296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1fd70a9725e414ea5e2398a7c3f65e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Interactable: {fileID: 0}
   maxLevel: 1
   level: 0
   upgradeCost:
@@ -11000,7 +11018,7 @@ MonoBehaviour:
     {0}/{1} "
   winScreen: {fileID: 297007024}
   timerText: {fileID: 788355795}
-  winTimer: 5
+  winTimer: 200
 --- !u!4 &630036996372241042
 Transform:
   m_ObjectHideFlags: 0
