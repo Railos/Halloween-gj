@@ -24,6 +24,6 @@ public class Shack : MonoBehaviour, IDamageable
 
     void Die()
     {
-        Destroy(gameObject);
+        GameLoop.Instance.GameOver();
     }
 }

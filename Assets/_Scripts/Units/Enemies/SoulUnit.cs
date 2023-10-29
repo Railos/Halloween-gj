@@ -18,6 +18,7 @@ public class SoulUnit : AIPath
     {
         base.OnTargetReached();
         linkedGrave.ReturnSoul();
+        GameLoop.Instance.DecreaseSoulsCount();
         Destroy(gameObject);
     }
 }
