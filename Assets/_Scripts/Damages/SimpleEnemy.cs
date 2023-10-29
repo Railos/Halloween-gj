@@ -12,7 +12,14 @@ public class SimpleEnemy : DamageableEnemy
     public float distDestination;
     public AIDestinationSetter destSetter;
     public Animator animator;
-    
+
+    private void Start()
+    {
+        house = FindObjectOfType<Shack>().transform;
+
+        hp = maxHp;
+    }
+
     private void Update()
     {
         if ((house.position.x - transform.position.x < 0f && transform.localScale.x > 0f ) || (house.position.x - transform.position.x > 0f && transform.localScale.x < 0f ))

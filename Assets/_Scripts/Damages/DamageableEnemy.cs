@@ -18,7 +18,7 @@ public class DamageableEnemy : MonoBehaviour, IDamageable
     public void GetDamage(float damage)
     {
         hp -= damage;
-        if (damage <= 0)
+        if (hp <= 0)
         {
             Die();
         }

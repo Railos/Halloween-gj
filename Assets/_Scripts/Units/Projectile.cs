@@ -22,7 +22,8 @@ public class Projectile : MonoBehaviour
         IDamageable dmg;
         if (other.gameObject.TryGetComponent(out dmg))
         {
-            dmg.GetDamage(damage);
+            if (other.gameObject.GetComponent<Shack>() == null)
+                dmg.GetDamage(damage);
         }
         Destroy(gameObject);
     }

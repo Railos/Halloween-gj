@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameLoop : Singleton<GameLoop>
@@ -43,5 +44,15 @@ public class GameLoop : Singleton<GameLoop>
     {
         gameOverScreen.gameObject.SetActive(true);
         gameOverScreen.DOFade(1f, 0.3f);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void ExitToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
